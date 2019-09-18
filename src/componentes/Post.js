@@ -6,7 +6,7 @@ class Post extends Component {
   state = {};
   render() {
     return (
-      <div class="col-12 col-md-8">
+      <div className="col-12 col-md-8">
         <h2 className="text-center">Post</h2>
         <Listado posts={this.props.posts}></Listado>
       </div>

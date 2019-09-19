@@ -6,6 +6,7 @@ import Header from "./Header";
 import Navegacion from "./Navegacio";
 import Post from "./Post";
 import SinglePost from "./SinglePost";
+import Formulario from "./Fomulario";
 
 class Router extends Component {
   state = {
@@ -25,7 +26,7 @@ class Router extends Component {
       .then(res => {
         if (res.status === 200) {
           const posts = [...this.state.posts];
-          let resultado = posts.filter(post => post.id != id);
+          let resultado = posts.filter(post => post.id !== Number(id));
           this.setState({ posts: resultado });
         }
       });
@@ -62,6 +63,7 @@ class Router extends Component {
                   return <SinglePost post={filtro[0]}> </SinglePost>;
                 }}
               ></Route>
+              <Route exact path="/crear" component={Formulario}></Route>
             </Switch>
           </div>
         </div>

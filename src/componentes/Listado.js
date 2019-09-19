@@ -11,7 +11,11 @@ class Listado extends Component {
     return (
       <React.Fragment>
         {Object.keys(post).map(post => (
-          <Posts key={post} info={this.props.posts[post]} />
+          <Posts
+            key={post}
+            info={this.props.posts[post]}
+            borrarPost={this.props.borrarPost}
+          />
         ))}
       </React.Fragment>
     );

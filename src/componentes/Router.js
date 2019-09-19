@@ -31,6 +31,9 @@ class Router extends Component {
         }
       });
   };
+  crearPost = post => {
+    console.log(post);
+  };
   render() {
     return (
       <BrowserRouter>
@@ -63,7 +66,13 @@ class Router extends Component {
                   return <SinglePost post={filtro[0]}> </SinglePost>;
                 }}
               ></Route>
-              <Route exact path="/crear" component={Formulario}></Route>
+              <Route
+                exact
+                path="/crear"
+                render={() => {
+                  return <Formulario crearPost={this.crearPost}> </Formulario>;
+                }}
+              ></Route>
             </Switch>
           </div>
         </div>

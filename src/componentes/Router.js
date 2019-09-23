@@ -37,6 +37,7 @@ class Router extends Component {
       .post(`https://jsonplaceholder.typicode.com/posts`, { post })
       .then(res => {
         if (res.status === 201) {
+          Swal.fire("Post creado!", "Se creo correctamente!", "success");
           let postId = { id: res.data.id };
 
           const nuevoPost = Object.assign({}, postId, res.data.post);

@@ -37,7 +37,8 @@ class Router extends Component {
       .then(res => {
         if (res.status === 201) {
           let postId = { id: res.data.id };
-          const nuevoPost = Object.assign({}, res.data.post, postId);
+
+          const nuevoPost = Object.assign({}, postId, res.data.post);
 
           this.setState(prevState => ({
             posts: [...prevState.posts, nuevoPost]
@@ -59,6 +60,7 @@ class Router extends Component {
                 render={() => {
                   return (
                     <Post
+                      crearPost
                       posts={this.state.posts}
                       borrarPost={this.borrarPost}
                     ></Post>

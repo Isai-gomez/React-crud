@@ -2,12 +2,14 @@ import React, { Component } from "react";
 
 class SinglePost extends Component {
   mostrarPost = props => {
-    if (!props.post) return null;
-    const { title, body, userId } = this.props.post;
+    if (!props.post) {
+      return null;
+    }
+    const { title, body, id } = this.props.post;
     return (
       <React.Fragment>
         <h3 className="text-center">{title}</h3>
-        <p>Autor: {userId}</p>
+        <p>Autor: {id}</p>
         {body}
       </React.Fragment>
     );

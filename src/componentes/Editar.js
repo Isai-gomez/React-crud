@@ -9,11 +9,12 @@ class Editar extends Component {
     // leer los resf
     const post = {
       title: this.tituloRef.current.value,
-      body: this.entradaRef.current.value
+      body: this.entradaRef.current.value,
+      id: this.props.post.id
     };
-    console.log(post);
+    // console.log(post);
     // enviar por props o petición de axios
-    //this.props.crearPost(post);
+    this.props.editarPost(post);
   };
   cargarFormulario = () => {
     if (!this.props.post) return null;

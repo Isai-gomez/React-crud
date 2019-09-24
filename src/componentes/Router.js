@@ -49,6 +49,20 @@ class Router extends Component {
         }
       });
   };
+  editarPost = postActualizado => {
+    // console.log(postActualizado);
+    const { id } = postActualizado;
+    console.log(postActualizado);
+    axios
+      .put(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        postActualizado
+      })
+      .then(res => {
+        if (res.status === 200) {
+          this.obtenerPost();
+        }
+      });
+  };
   render() {
     return (
       <BrowserRouter>
@@ -97,7 +111,11 @@ class Router extends Component {
                   const posts = this.state.posts;
                   let filtro;
                   filtro = posts.filter(post => post.id === Number(idPost));
-                  return <Editar post={filtro[0]}> </Editar>;
+                  return (
+                    <Editar post={filtro[0]} editarPost={this.editarPost}>
+                      {" "}
+                    </Editar>
+                  );
                 }}
               ></Route>
             </Switch>

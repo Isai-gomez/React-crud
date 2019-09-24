@@ -8,6 +8,7 @@ import Navegacion from "./Navegacio";
 import Post from "./Post";
 import SinglePost from "./SinglePost";
 import Formulario from "./Fomulario";
+import Editar from "./Editar";
 
 class Router extends Component {
   state = {
@@ -86,6 +87,17 @@ class Router extends Component {
                 path="/crear"
                 render={() => {
                   return <Formulario crearPost={this.crearPost}> </Formulario>;
+                }}
+              ></Route>
+              <Route
+                exact
+                path="/editar/:postId"
+                render={props => {
+                  let idPost = props.location.pathname.replace("/editar/", "");
+                  const posts = this.state.posts;
+                  let filtro;
+                  filtro = posts.filter(post => post.id === Number(idPost));
+                  return <Editar post={filtro[0]}> </Editar>;
                 }}
               ></Route>
             </Switch>

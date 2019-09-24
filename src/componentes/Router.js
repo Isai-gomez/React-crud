@@ -59,7 +59,17 @@ class Router extends Component {
       })
       .then(res => {
         if (res.status === 200) {
-          this.obtenerPost();
+          Swal.fire(
+            "Post actualizado!",
+            "Se actualizo correctamente!",
+            "success"
+          );
+          let postId = res.data.id;
+          const posts = [...this.state.posts];
+          const posEditar = posts.findIndex(post => postId === post.id);
+          posts[posEditar] = postActualizado;
+          this.setState({ posts });
+          console.log(posEditar);
         }
       });
   };
